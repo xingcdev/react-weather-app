@@ -56,7 +56,9 @@ TODO
 
 ## Acknowledgments
 
-[How to build a Todo List App with JavaScript - Freshman](https://freshman.tech/todo-list/) - This blog post helped me to build a to-do list app using JavaScript. I really liked this tutorial because the author explains why he is using that code.
+[How to Build a Weather Application with React and React Hooks](https://www.freecodecamp.org/news/learn-react-by-building-a-weather-app/)
+
+https://objectifsmartphone.fr/wp-content/uploads/2021/06/iOS-15-weather-app.jpg
 
 ## Tasks
 
