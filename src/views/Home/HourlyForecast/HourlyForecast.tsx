@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../../../components/Card/Card';
+import ScrollableContainer from '../../../components/ScrollableContainer/ScrollableContainer';
 import { Chart, Line } from 'react-chartjs-2';
 import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels';
 import dayjs from 'dayjs';
@@ -38,7 +39,7 @@ const HourlyForecast = function ({ data }: Props) {
 
 	const options = {
 		maintainAspectRatio: false,
-		responsive: false,
+		responsive: true,
 		plugins: {
 			legend: {
 				display: false,
@@ -74,7 +75,9 @@ const HourlyForecast = function ({ data }: Props) {
 
 	return (
 		<Card>
-			<Line data={chartData} width={3000} options={options} />
+			<ScrollableContainer>
+				<Line data={chartData} width={3000} options={options} />
+			</ScrollableContainer>
 		</Card>
 	);
 };
