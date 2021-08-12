@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import HourlyForecast from '../HourlyForecast/HourlyForecast';
 import WeatherHeader from '../WeatherHeader/WeatherHeader';
 
 function HomePage() {
@@ -49,7 +50,7 @@ function HomePage() {
 	};
 
 	const [weatherData, setWeatherData] = useState(testData);
-	const [isLoaded, setIsLoaded] = useState(true);
+	const [isLoaded, setIsLoaded] = useState(false);
 
 	// useEffect(() => {
 	// 	const fetchWeather = async function () {
@@ -65,18 +66,47 @@ function HomePage() {
 
 	// 	fetchWeather();
 	// }, []);
+	type DataFormat = { hourly: []; daily: [] };
+	const [forecastData, setForecastData] = useState<DataFormat>({
+		hourly: [],
+		daily: [],
+	});
+	useEffect(() => {
+		const fetchData = async function () {
+			await fetch(
+				`${process.env.REACT_APP_WEATHER_API_URL}onecall?lat=33.44&lon=-94.04&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+			)
+				.then((res) => res.json())
+				.then((result) => {
+					setForecastData(result);
+					console.log(result);
+					setIsLoaded(true);
+				});
+		};
+
+		fetchData();
+	}, []);
 
 	if (!isLoaded) return <p>Loading...</p>;
 	else
 		return (
-			<WeatherHeader
-				city={weatherData.name}
-				temp={weatherData.main.temp}
-				description={weatherData.weather[0].description}
-				lon={weatherData.coord.lon}
-				lat={weatherData.coord.lat}
-			/>
+			<div>
+				<WeatherHeader
+					city={weatherData.name}
+					temp={weatherData.main.temp}
+					description={weatherData.weather[0].description}
+					lon={weatherData.coord.lon}
+					lat={weatherData.coord.lat}
+				/>
+				<HourlyForecast data={forecastData.hourly} />
+			</div>
 		);
 }
+
+const useHourlyData = function () {
+	const [data, setData] = useState({});
+
+	return data;
+};
 
 export default HomePage;
