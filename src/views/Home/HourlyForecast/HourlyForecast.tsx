@@ -1,7 +1,8 @@
 import React from 'react';
 import Card from '../../../components/Card/Card';
 import { Chart, Line } from 'react-chartjs-2';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels';
+import dayjs from 'dayjs';
 
 type Props = {
 	data: any[];
@@ -13,7 +14,7 @@ const HourlyForecast = function ({ data }: Props) {
 	console.log(temperatures);
 
 	const times: string[] = data.map((weather) =>
-		convertToReadableDate(weather.dt).getHours().toString()
+		convertToReadableHour(weather.dt)
 	);
 	console.log(times);
 
@@ -23,7 +24,6 @@ const HourlyForecast = function ({ data }: Props) {
 			{
 				data: temperatures,
 				fill: false,
-				// backgroundColor: 'rgb(255, 255, 255)',
 				borderColor: '#333',
 				borderWidth: 1,
 				pointRadius: 0,
@@ -46,6 +46,22 @@ const HourlyForecast = function ({ data }: Props) {
 			datalabels: {
 				display: true,
 				color: '#333',
+				labels: {
+					temperature: {
+						align: 'top',
+						offset: 20,
+						font: {
+							weight: 'bold',
+						},
+					},
+					time: {
+						align: 'bottom',
+						offset: 10,
+						color: 'grey',
+						formatter: (currentValue: any, context: Context) =>
+							context.chart.data.labels[context.dataIndex],
+					},
+				},
 			},
 		},
 		scales: {
@@ -56,12 +72,6 @@ const HourlyForecast = function ({ data }: Props) {
 		},
 	};
 
-	const list = data.map((weather) => (
-		<li>
-			<p>{convertToReadableDate(weather.dt).getHours()} AM</p>
-			<p>{weather.temp}&deg;</p>
-		</li>
-	));
 	return (
 		<Card>
 			<Line data={chartData} width={3000} options={options} />
@@ -69,9 +79,9 @@ const HourlyForecast = function ({ data }: Props) {
 	);
 };
 
-const convertToReadableDate = function (timestamp: any) {
+const convertToReadableHour = function (timestamp: any) {
 	/* JavaScript works in milliseconds, multiplied by 1000 so that the argument is in milliseconds, not seconds. */
-	return new Date(timestamp * 1000);
+	return dayjs(timestamp * 1000).format('h A');
 };
 
 export default HourlyForecast;
