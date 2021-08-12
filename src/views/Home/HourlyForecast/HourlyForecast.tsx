@@ -27,8 +27,8 @@ const HourlyForecast = function ({ data }: Props) {
 				fill: false,
 				borderColor: '#333',
 				borderWidth: 1,
-				pointRadius: 0,
-				tension: 0,
+				pointRadius: 2,
+				tension: 0.1,
 				datalabels: {
 					align: 'top',
 					anchor: 'end',
@@ -39,7 +39,7 @@ const HourlyForecast = function ({ data }: Props) {
 
 	const options = {
 		maintainAspectRatio: false,
-		responsive: true,
+		responsive: false,
 		plugins: {
 			legend: {
 				display: false,
@@ -69,14 +69,17 @@ const HourlyForecast = function ({ data }: Props) {
 			x: {
 				display: false,
 			},
-			y: { display: false },
+			y: { display: false, min: 10, max: 50 },
+		},
+		layout: {
+			padding: 30,
 		},
 	};
 
 	return (
 		<Card>
 			<ScrollableContainer>
-				<Line data={chartData} width={3000} options={options} />
+				<Line data={chartData} width={1200} height={200} options={options} />
 			</ScrollableContainer>
 		</Card>
 	);
