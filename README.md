@@ -38,7 +38,12 @@ Users should be able to:
 
 - Mobile-first workflow
 - React
-- Semantic UI
+- Tailwind CSS
+- TypeScript
+- Day.js
+- [Chart.js](https://www.chartjs.org/)
+- [react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2)
+- [Chart.js Datalabel plugin](https://chartjs-plugin-datalabels.netlify.app/)
 
 ### Components
 
@@ -47,7 +52,23 @@ Users should be able to:
 - HourlyForecast ([design](https://dribbble.com/shots/11474539-Weather-App))
 - DailyForecast ([design](https://dribbble.com/shots/11474539-Weather-App))
 
-### What I learned
+## What I learned
+
+### Setup TypeScript with React
+
+See: [Setup TypeScript with React - React TypeScript CheatSheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/setup)
+
+### OpenWeather API
+
+See: [OpenWeather One Call API docs](https://openweathermap.org/api/one-call-api)
+
+### Day.js
+
+Convert a timestamp (seconds) into hours (e.g 10 PM or 11 AM):
+
+```javascript
+dayjs(timestamp * 1000).format('h A');
+```
 
 ## Author
 
