@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import HourlyForecast from '../HourlyForecast/HourlyForecast';
 import WeatherHeader from '../WeatherHeader/WeatherHeader';
 
-function computeHourlyForecast(data: object[], gap: number) {
-	const hourlyWeather: object[] = [];
-	for (let index = 0; index < data.length; index += gap) {
-		const currentWeather = data[index];
-		hourlyWeather.push(currentWeather);
-	}
-
-	return hourlyWeather;
+interface Data {
+	dt: number;
+	temp?: number;
+	weather?: [
+		{
+			id: number;
+		}
+	];
 }
 
 function HomePage() {
@@ -76,8 +76,10 @@ function HomePage() {
 
 	// 	fetchWeather();
 	// }, []);
-	type DataFormat = { hourly: object[]; daily: [] };
-	const [forecastData, setForecastData] = useState<DataFormat>({
+	const [forecastData, setForecastData] = useState<{
+		hourly: { [key: string]: any }[];
+		daily: { [key: string]: any }[];
+	}>({
 		hourly: [
 			{
 				dt: 1628787600,
@@ -616,7 +618,6 @@ function HomePage() {
 
 	// 	fetchData();
 	// }, []);
-	const hourlyForecast = computeHourlyForecast(forecastData.hourly, 2);
 
 	if (!isLoaded) return <p>Loading...</p>;
 	else
@@ -629,7 +630,7 @@ function HomePage() {
 					lon={weatherData.coord.lon}
 					lat={weatherData.coord.lat}
 				/>
-				<HourlyForecast data={hourlyForecast} />
+				<HourlyForecast data={forecastData.hourly} />
 			</div>
 		);
 }
