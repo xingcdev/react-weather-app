@@ -28,6 +28,18 @@ Users should be able to:
 - add multiple city
 - swipe to see another city's weather
 
+Weather conditions
+
+| `weather.id` | `weather.main` | Icon name           |
+| ------------ | -------------- | ------------------- |
+| 2xx          | Thunderstorm   | WiNightAltLightning |
+| 3xx          | Drizzle        | WiRainMix           |
+| 5xx          | Rain           | WiRain              |
+| 6xx          | Snow           | WiSnow              |
+| 7xx          | Atmosphere     | WiDust              |
+| 800          | Clear          | WiDaySunny          |
+| 80x          | Clouds         | WiCloud             |
+
 ### Screenshot
 
 ![](./screenshot.jpg)
@@ -44,6 +56,7 @@ Users should be able to:
 - [Chart.js](https://www.chartjs.org/)
 - [react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2)
 - [Chart.js Datalabel plugin](https://chartjs-plugin-datalabels.netlify.app/)
+- [React Feather icons](https://github.com/feathericons/react-feather)
 
 ### Components
 
@@ -69,6 +82,54 @@ Convert a timestamp (seconds) into hours (e.g 10 PM or 11 AM):
 ```javascript
 dayjs(timestamp * 1000).format('h A');
 ```
+
+### Make a scrollable chart in React and Tailwind
+
+Create a `ScrollableContainer` component:
+
+```javascript
+export default function ScrollableContainer({ children }) {
+	return <div className="overflow-x-scroll no-scrollbar">{children}</div>;
+}
+```
+
+Add a new CSS class `no-scrollbar` in `tailwind.config.js` file. That will hide the scrollbar but keep the scroll functionality.
+Notice that we don't use `overflow-x-hidden` class because it'll disable the scroll.
+
+```css
+const plugin = require('tailwindcss/plugin');
+
+module.exports = {
+	/* ... */
+	plugins: [
+		plugin(function ({ addUtilities }) {
+			const newUtilities = {
+				'.no-scrollbar::-webkit-scrollbar': {
+					display: 'none' /* Chrome */,
+				},
+				'.no-scrollbar': {
+					'-ms-overflow-style': 'none' /* IE and Edge */,
+					scrollbarWidth: 'none' /* Firefox */,
+				},
+			};
+
+			addUtilities(newUtilities);
+		}),
+	],
+};
+```
+
+Create a chart that its width is greater than the container:
+
+```javascript
+<ScrollableContainer>
+	<LineChart data={chartData} width={1200}>
+		...
+	</LineChart>
+</ScrollableContainer>
+```
+
+Source : [How to create scrollable element in Tailwind without a scrollbar - Stack Overflow](https://stackoverflow.com/a/66436651)
 
 ## Author
 
