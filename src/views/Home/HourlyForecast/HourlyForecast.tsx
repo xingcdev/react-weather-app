@@ -27,7 +27,7 @@ function CustomLabel(props) {
 				<text fontSize={18} textAnchor="middle">
 					{data[index].temperature}
 				</text>
-				<text dy={60} fontSize={13} textAnchor="middle">
+				<text dy={60} fill="#6B7280" fontSize={13} textAnchor="middle">
 					{data[index].hour}
 				</text>
 			</g>
@@ -44,8 +44,8 @@ const HourlyForecast = function ({ data }: Props) {
 				<LineChart
 					data={chartData}
 					width={1200}
-					height={300}
-					margin={{ top: 100, right: 0, left: 30, bottom: 10 }}
+					height={200}
+					margin={{ top: 100, right: 0, left: 30, bottom: 20 }}
 				>
 					<Line
 						type="linear"
@@ -53,6 +53,7 @@ const HourlyForecast = function ({ data }: Props) {
 						dot={false}
 						stroke="#333"
 						strokeWidth={1}
+						isAnimationActive={false}
 						/* @ts-ignore The typings are incorrect */
 						label={<CustomLabel data={chartData} />}
 					/>
@@ -60,6 +61,7 @@ const HourlyForecast = function ({ data }: Props) {
 					<YAxis
 						hide={true}
 						type="number"
+						allowDataOverflow={true}
 						domain={['dataMin - 5', 'dataMax']}
 					/>
 				</LineChart>

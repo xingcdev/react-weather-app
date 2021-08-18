@@ -1,3 +1,3 @@
 export default function ScrollableContainer({ children }) {
-	return <div style={{ overflowX: 'scroll' }}>{children}</div>;
+	return <div className="overflow-x-scroll no-scrollbar">{children}</div>;
 }
