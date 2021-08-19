@@ -28,18 +28,6 @@ Users should be able to:
 - add multiple city
 - swipe to see another city's weather
 
-Weather conditions
-
-| `weather.id` | `weather.main` | Icon name           |
-| ------------ | -------------- | ------------------- |
-| 2xx          | Thunderstorm   | WiNightAltLightning |
-| 3xx          | Drizzle        | WiRainMix           |
-| 5xx          | Rain           | WiRain              |
-| 6xx          | Snow           | WiSnow              |
-| 7xx          | Atmosphere     | WiDust              |
-| 800          | Clear          | WiDaySunny          |
-| 80x          | Clouds         | WiCloud             |
-
 ### Screenshot
 
 ![](./screenshot.jpg)
