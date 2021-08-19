@@ -3,11 +3,12 @@ import Card from '../../../components/Card/Card';
 import ScrollableContainer from '../../../components/ScrollableContainer/ScrollableContainer';
 import { LineChart, Line, YAxis } from 'recharts';
 import dayjs from 'dayjs';
+import WeatherIcon from '../WeatherIcon/WeatherIcon';
 
-interface HourlyWeather {
+interface ChartData {
 	hour: string;
 	temperature: number;
-	icon: number;
+	icon: string;
 }
 
 type Props = {
@@ -16,12 +17,14 @@ type Props = {
 
 function CustomLabel(props) {
 	const { x, y, index, data } = props;
-
+	const iconSize = 32;
 	return (
 		<svg>
-			<g transform={`translate(${x - 20 / 2},${y - 70})`}></g>
+			<g transform={`translate(${x - iconSize / 2},${y - 80})`}>
+				<WeatherIcon name={data[index].icon} size={iconSize} color="#000" />
+			</g>
 			<g transform={`translate(${x},${y - 25})`}>
-				<text fontSize={18} textAnchor="middle">
+				<text fontSize={20} textAnchor="middle">
 					{data[index].temperature}
 				</text>
 				<text dy={60} fill="#6B7280" fontSize={13} textAnchor="middle">
@@ -33,7 +36,7 @@ function CustomLabel(props) {
 }
 
 const HourlyForecast = function ({ data }: Props) {
-	const chartData: HourlyWeather[] = computeHourlyForecast(data, 2);
+	const chartData: ChartData[] = computeHourlyForecast(data, 2);
 
 	return (
 		<Card>
@@ -42,7 +45,7 @@ const HourlyForecast = function ({ data }: Props) {
 					data={chartData}
 					width={1200}
 					height={200}
-					margin={{ top: 100, right: 0, left: 30, bottom: 20 }}
+					margin={{ top: 100, right: 40, left: 40, bottom: 20 }}
 				>
 					<Line
 						type="linear"
@@ -73,7 +76,7 @@ const convertToReadableHour = function (timestamp: any) {
 };
 
 function computeHourlyForecast(data: any[], gap: number) {
-	let hourlyWeather: HourlyWeather[] = [];
+	let hourlyWeather: ChartData[] = [];
 
 	for (let index = 0; index < data.length; index += gap) {
 		const currentWeather = data[index];
@@ -81,7 +84,7 @@ function computeHourlyForecast(data: any[], gap: number) {
 		const object = {
 			hour: convertToReadableHour(currentWeather.dt),
 			temperature: currentWeather.temp,
-			icon: currentWeather.weather[0].id,
+			icon: currentWeather.weather[0].icon,
 		};
 
 		hourlyWeather.push(object);
