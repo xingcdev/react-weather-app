@@ -3,7 +3,6 @@ import Card from '../../../components/Card/Card';
 import ScrollableContainer from '../../../components/ScrollableContainer/ScrollableContainer';
 import { LineChart, Line, YAxis } from 'recharts';
 import dayjs from 'dayjs';
-import { Camera } from 'react-feather';
 
 interface HourlyWeather {
 	hour: string;
@@ -20,9 +19,7 @@ function CustomLabel(props) {
 
 	return (
 		<svg>
-			<g transform={`translate(${x - 20 / 2},${y - 70})`}>
-				<Camera size="20" />
-			</g>
+			<g transform={`translate(${x - 20 / 2},${y - 70})`}></g>
 			<g transform={`translate(${x},${y - 25})`}>
 				<text fontSize={18} textAnchor="middle">
 					{data[index].temperature}
