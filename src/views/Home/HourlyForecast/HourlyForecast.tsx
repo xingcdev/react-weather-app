@@ -21,7 +21,7 @@ function CustomLabel(props) {
 	return (
 		<svg>
 			<g transform={`translate(${x - iconSize / 2},${y - 80})`}>
-				<WeatherIcon name={data[index].icon} size={iconSize} color="#000" />
+				<WeatherIcon name={data[index].icon} size={iconSize} color="#333" />
 			</g>
 			<g transform={`translate(${x},${y - 25})`}>
 				<text fontSize={20} textAnchor="middle">
