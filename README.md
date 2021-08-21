@@ -32,6 +32,10 @@ Users should be able to:
 
 ![](./screenshot.jpg)
 
+### Weather Icons code
+
+See: [Weather Conditions of OpenWeather API](https://openweathermap.org/weather-conditions)
+
 ## My process
 
 ### Built with
@@ -126,5 +130,7 @@ Source : [How to create scrollable element in Tailwind without a scrollbar - Sta
 ## Acknowledgments
 
 [How to Build a Weather Application with React and React Hooks](https://www.freecodecamp.org/news/learn-react-by-building-a-weather-app/)
+
+3D Weather Icons by [hosein_bagheri](https://ui8.net/hosein_bagheri/products/3d-weather-icons40)
 
 https://objectifsmartphone.fr/wp-content/uploads/2021/06/iOS-15-weather-app.jpg
