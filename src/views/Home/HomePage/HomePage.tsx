@@ -627,8 +627,7 @@ function HomePage() {
 					city={weatherData.name}
 					temp={weatherData.main.temp}
 					description={weatherData.weather[0].description}
-					lon={weatherData.coord.lon}
-					lat={weatherData.coord.lat}
+					icon={weatherData.weather[0].icon}
 				/>
 				<HourlyForecast data={forecastData.hourly} />
 			</div>
