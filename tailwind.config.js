@@ -11,7 +11,7 @@ module.exports = {
 				text: colors.gray,
 				subText: '#D4D4D8',
 				background: '#fefefe',
-				gray: '#F9FAFB',
+				card: '#F9FAFB',
 			},
 		},
 	},

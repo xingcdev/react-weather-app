@@ -13,6 +13,8 @@ interface Data {
 }
 
 function HomePage() {
+	const [backgroundColor, setBackgroundColor] = useState('');
+
 	// TO REMOVE
 	const testData = {
 		coord: {
@@ -622,7 +624,7 @@ function HomePage() {
 	if (!isLoaded) return <p>Loading...</p>;
 	else
 		return (
-			<div>
+			<div className={backgroundColor}>
 				<WeatherHeader
 					city={weatherData.name}
 					temp={weatherData.main.temp}
@@ -639,5 +641,25 @@ const useHourlyData = function () {
 
 	return data;
 };
+
+function changeBackgroundColor(weatherConditionId: number) {
+	let colorCode: string = '#fefefe';
+	if (weatherConditionId <= 299) {
+		colorCode = 'bg-gradient-to-b from-gray-200 to-gray-400';
+	} else if (weatherConditionId <= 399) {
+		colorCode = 'bg-gradient-to-b from-gray-200 to-blue-200';
+	} else if (weatherConditionId <= 599) {
+		colorCode = 'bg-gradient-to-b from-gray-200 to-blue-200';
+	} else if (weatherConditionId <= 699) {
+		colorCode = 'bg-gradient-to-b from-white to-gray-100';
+	} else if (weatherConditionId <= 799) {
+		colorCode = 'bg-gradient-to-b from-gray-200 to-yellow-700';
+	} else if (weatherConditionId <= 800) {
+		colorCode = 'bg-gradient-to-b from-blue-100 to-blue-400';
+	} else {
+		colorCode = 'bg-gradient-to-b from-gray-50 to-blue-100';
+	}
+	return colorCode;
+}
 
 export default HomePage;
