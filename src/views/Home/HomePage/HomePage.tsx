@@ -624,7 +624,7 @@ function HomePage() {
 	if (!isLoaded) return <p>Loading...</p>;
 	else
 		return (
-			<div className={backgroundColor}>
+			<div className={`${backgroundColor}`}>
 				<WeatherHeader
 					city={weatherData.name}
 					temp={weatherData.main.temp}

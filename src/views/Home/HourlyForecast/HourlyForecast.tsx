@@ -11,10 +11,6 @@ interface ChartData {
 	icon: string;
 }
 
-type Props = {
-	data: any[];
-};
-
 function CustomLabel(props) {
 	const { x, y, index, data } = props;
 	const iconSize = 32;
@@ -35,8 +31,12 @@ function CustomLabel(props) {
 	);
 }
 
-const HourlyForecast = function ({ data }: Props) {
-	const chartData: ChartData[] = computeHourlyForecast(data, 2);
+type Props = {
+	data: any[];
+};
+
+const HourlyForecast = function (props: Props) {
+	const chartData: ChartData[] = computeHourlyForecast(props.data, 2);
 
 	return (
 		<Card>

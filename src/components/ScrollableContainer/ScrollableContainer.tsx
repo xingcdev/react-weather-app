@@ -1,3 +1,3 @@
-export default function ScrollableContainer({ children }) {
-	return <div className="overflow-x-scroll no-scrollbar">{children}</div>;
+export default function ScrollableContainer(props) {
+	return <div className="overflow-x-scroll no-scrollbar">{props.children}</div>;
 }

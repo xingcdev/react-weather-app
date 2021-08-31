@@ -123,6 +123,13 @@ Create a chart that its width is greater than the container:
 
 Source : [How to create scrollable element in Tailwind without a scrollbar - Stack Overflow](https://stackoverflow.com/a/66436651)
 
+### Create a touch slider
+
+[Build a Touch Slider with HTML, CSS & JavaScript - Youtube](https://www.youtube.com/watch?v=5bxFSOA5JYo)
+https://medium.com/tinyso/how-to-create-the-responsive-and-swipeable-carousel-slider-component-in-react-99f433364aa0
+
+https://www.freecodecamp.org/news/make-react-apps-responsive/
+
 ## Author
 
 - GitHub - [xingcdev](https://github.com/xingcdev)
