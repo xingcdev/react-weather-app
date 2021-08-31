@@ -13,7 +13,9 @@ interface Data {
 }
 
 function HomePage() {
-	const [backgroundColor, setBackgroundColor] = useState('');
+	const [backgroundColor, setBackgroundColor] = useState(
+		'bg-gradient-to-b from-blue-100 to-blue-400'
+	);
 
 	// TO REMOVE
 	const testData = {
