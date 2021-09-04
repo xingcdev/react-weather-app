@@ -123,10 +123,41 @@ Create a chart that its width is greater than the container:
 
 Source : [How to create scrollable element in Tailwind without a scrollbar - Stack Overflow](https://stackoverflow.com/a/66436651)
 
-### Create a touch slider
+### Create a scrollable container using Swiper
 
-[Build a Touch Slider with HTML, CSS & JavaScript - Youtube](https://www.youtube.com/watch?v=5bxFSOA5JYo)
-https://medium.com/tinyso/how-to-create-the-responsive-and-swipeable-carousel-slider-component-in-react-99f433364aa0
+```javascript
+// ScrollableContainer.tsx
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+export default function ScrollableContainer(props) {
+	return (
+		<Swiper
+			slidesPerView={'auto'}
+			freeMode={true}
+			// Prevent the whole page to be swiped
+			touchMoveStopPropagation={true}
+		>
+			{/* The width is the chart's */}
+			<SwiperSlide style={{ width: '1200px' }}>{props.children}</SwiperSlide>
+		</Swiper>
+	);
+}
+```
+
+Use the `ScrollableContainer` component:
+
+```javascript
+<ScrollableContainer>
+	<LineChart data={chartData} width={1200} height={200}>
+		<Line type="linear" dataKey="temperature" />
+	</LineChart>
+</ScrollableContainer>
+```
+
+We set the width of `SwiperSlide` to `1200px` to make sure we can scroll over the whole chart.
+
+### Create a responsive component using hooks
 
 https://www.freecodecamp.org/news/make-react-apps-responsive/
 
