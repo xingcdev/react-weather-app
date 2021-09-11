@@ -340,17 +340,24 @@ const DailyForecast = function () {
 						<p>
 							{index === 0 ? 'Now' : dayjs.unix(singleDay.dt).format('ddd')}
 						</p>
-						<span>{singleDay.temp.day}</span>
+						{/* TODO: Fix temp not align */}
 						<section>
-							{
-								// TODO: Remove svg right margin
-								// TODO ; Create a function that remove decimal numbers.
-								<WeatherIcon
-									name={singleDay.weather[0].icon}
-									size={32}
-									color="#333"
-								/>
-							}
+							<span className="mr-5">{singleDay.temp.day}&deg;</span>
+							<span>{singleDay.temp.night}&deg;</span>
+						</section>
+
+						<section>
+							<span className="mr-4">
+								{
+									// TODO ; Create a function that remove decimal numbers.
+									<WeatherIcon
+										name={singleDay.weather[0].icon}
+										size={32}
+										color="#333"
+									/>
+								}
+							</span>
+
 							<span>{singleDay.weather[0].description}</span>
 						</section>
 					</li>
