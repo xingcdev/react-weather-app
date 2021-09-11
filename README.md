@@ -20,11 +20,11 @@
 
 Users should be able to:
 
-- View the optimal layout for the app depending on their device's screen size
-- View informations: city name, temperature, weather infos (snow, heavy rain, etc.)latitude, longitude
-- View every 2 hours weather
+- [x] View the optimal layout for the app depending on their device's screen size
+- [x] View informations: city name, temperature, weather infos (snow, heavy rain, etc.)latitude, longitude
+- [x] View every 2 hours weather
 - View the weather in the next 10 days.
-- backgroud animation depending the weather (rain, sun)
+- [x] backgroud animation depending the weather (rain, sun)
 - add multiple city
 - swipe to see another city's weather
 
