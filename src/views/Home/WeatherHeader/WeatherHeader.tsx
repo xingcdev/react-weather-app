@@ -1,4 +1,4 @@
-import WeatherIcon from '../WeatherIcon/WeatherIcon';
+import WeatherIcon from '../../../components/WeatherIcon/WeatherIcon';
 
 type Props = {
 	city: string;

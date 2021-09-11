@@ -13,16 +13,16 @@ import {
 	WiFog,
 } from 'weather-icons-react';
 
-import sun from '../../../assets/WeatherIcons/sun.png';
-import moon from '../../../assets/WeatherIcons/moon.png';
-import dayCloudy from '../../../assets/WeatherIcons/dayCloudy.png';
-import nightCloudy from '../../../assets/WeatherIcons/nightCloudy.png';
-import cloud from '../../../assets/WeatherIcons/cloud.png';
-import showerRain from '../../../assets/WeatherIcons/showerRain.png';
-import dayRain from '../../../assets/WeatherIcons/dayRain.png';
-import nightRain from '../../../assets/WeatherIcons/nightRain.png';
-import thunderstorm from '../../../assets/WeatherIcons/thunderstorm.png';
-import snow from '../../../assets/WeatherIcons/snow.png';
+import sun from '../../assets/WeatherIcons/sun.png';
+import moon from '../../assets/WeatherIcons/moon.png';
+import dayCloudy from '../../assets/WeatherIcons/dayCloudy.png';
+import nightCloudy from '../../assets/WeatherIcons/nightCloudy.png';
+import cloud from '../../assets/WeatherIcons/cloud.png';
+import showerRain from '../../assets/WeatherIcons/showerRain.png';
+import dayRain from '../../assets/WeatherIcons/dayRain.png';
+import nightRain from '../../assets/WeatherIcons/nightRain.png';
+import thunderstorm from '../../assets/WeatherIcons/thunderstorm.png';
+import snow from '../../assets/WeatherIcons/snow.png';
 
 type Props = {
 	name: string;

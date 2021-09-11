@@ -3,7 +3,7 @@ import Card from '../../../components/Card/Card';
 import ScrollableContainer from '../../../components/ScrollableContainer/ScrollableContainer';
 import { LineChart, Line, YAxis } from 'recharts';
 import dayjs from 'dayjs';
-import WeatherIcon from '../WeatherIcon/WeatherIcon';
+import WeatherIcon from '../../../components/WeatherIcon/WeatherIcon';
 
 interface ChartData {
 	hour: string;
