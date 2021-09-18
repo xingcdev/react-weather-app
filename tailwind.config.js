@@ -8,7 +8,6 @@ module.exports = {
 		// Extend the default color palette rather than override it,
 		extend: {
 			colors: {
-				text: colors.gray,
 				subText: '#D4D4D8',
 				background: '#fefefe',
 				card: '#F9FAFB',
