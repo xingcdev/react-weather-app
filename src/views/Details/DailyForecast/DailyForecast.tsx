@@ -1,7 +1,8 @@
 import dayjs from 'dayjs';
 import WeatherIcon from '../../../components/WeatherIcon/WeatherIcon';
+import { removeDecimal } from '../../../utils/helpers/number.helper';
 
-interface ForecastData {
+interface ApiData {
 	lat: number;
 	lon: number;
 	timezone: string;
@@ -9,8 +10,29 @@ interface ForecastData {
 	daily: { [key: string]: any }[];
 }
 
+interface ForecastData {
+	time: number;
+	dayTemp: number;
+	nightTemp: number;
+	description: string;
+	icon: string;
+}
+
+function extractDataFromApi(apiData: ApiData): ForecastData[] {
+	const result: ForecastData[] = apiData.daily.map((singleDay) => {
+		return {
+			time: singleDay.dt,
+			dayTemp: removeDecimal(singleDay.temp.day),
+			nightTemp: removeDecimal(singleDay.temp.night),
+			description: singleDay.weather[0].description,
+			icon: singleDay.weather[0].icon,
+		};
+	});
+	return result;
+}
+
 const DailyForecast = function () {
-	const forecastData: ForecastData = {
+	const APIData: ApiData = {
 		lat: 33.44,
 		lon: 37.39,
 		timezone: 'Asia/Damascus',
@@ -331,34 +353,27 @@ const DailyForecast = function () {
 		],
 	};
 
+	const forecastData: ForecastData[] = extractDataFromApi(APIData);
 	return (
 		<div>
 			<h2>This week</h2>
 			<ul>
-				{forecastData.daily.map((singleDay, index) => (
+				{forecastData.map((singleDay, index) => (
 					<li key={index} className="flex justify-between items-center">
 						<p>
-							{index === 0 ? 'Now' : dayjs.unix(singleDay.dt).format('ddd')}
+							{index === 0 ? 'Now' : dayjs.unix(singleDay.time).format('ddd')}
 						</p>
-						{/* TODO: Fix temp not align */}
 						<section>
-							<span className="mr-5">{singleDay.temp.day}&deg;</span>
-							<span>{singleDay.temp.night}&deg;</span>
+							<span className="mr-5">{singleDay.dayTemp}&deg;</span>
+							<span>{singleDay.nightTemp}&deg;</span>
 						</section>
 
 						<section>
 							<span className="mr-4">
-								{
-									// TODO ; Create a function that remove decimal numbers.
-									<WeatherIcon
-										name={singleDay.weather[0].icon}
-										size={32}
-										color="#333"
-									/>
-								}
+								{<WeatherIcon name={singleDay.icon} size={32} color="#333" />}
 							</span>
 
-							<span>{singleDay.weather[0].description}</span>
+							<span>{singleDay.description}</span>
 						</section>
 					</li>
 				))}
