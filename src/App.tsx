@@ -9,7 +9,7 @@ function App() {
 	const isMobile = useWindowWidth() <= 1024;
 
 	return (
-		<div className="App text-lg font-mono">
+		<div className="App text-lg font-mono text-gray-500">
 			{isMobile ? (
 				<Swiper spaceBetween={50} slidesPerView={1}>
 					<SwiperSlide>
