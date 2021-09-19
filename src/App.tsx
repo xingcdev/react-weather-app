@@ -19,8 +19,6 @@ function App() {
 					<SwiperSlide>
 						<DetailsPage />
 					</SwiperSlide>
-					<SwiperSlide>Slide 3</SwiperSlide>
-					<SwiperSlide>Slide 4</SwiperSlide>
 				</Swiper>
 			) : (
 				<div className="pt-4 grid grid-cols-12">
