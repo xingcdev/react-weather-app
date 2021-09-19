@@ -40,7 +40,7 @@ const HourlyForecast = function (props: Props) {
 
 	return (
 		<Card>
-			<p className="text-xl">Today</p>
+			<h2>Today</h2>
 			<ScrollableContainer>
 				<LineChart
 					data={chartData}
