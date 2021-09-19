@@ -23,7 +23,7 @@ function App() {
 					<SwiperSlide>Slide 4</SwiperSlide>
 				</Swiper>
 			) : (
-				<div className="flex justify-center items-center max-w-screen-xl m-auto">
+				<div className="pt-4 grid grid-cols-12">
 					<HomePage />
 					<DetailsPage />
 				</div>
