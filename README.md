@@ -163,6 +163,49 @@ https://www.freecodecamp.org/news/make-react-apps-responsive/
 
 ### Add custom fonts in React Tailwind
 
+The example below use [Merriweather font](https://fonts.google.com/specimen/Merriweather).
+
+I've used [Fontsource](https://fontsource.org/) to download the font.
+Fontsource is a fonts monorepo bundled into individual NPM packages. That means you can download several Google fonts with the command `npm install`.
+
+Download Merriweather font:
+
+```shell
+npm install @fontsource/merriweather-sans
+```
+
+Import the font in the React app entry file `App.tsx` or `App.js`.
+
+```shell
+import '@fontsource/merriweather-sans';
+```
+
+Then add `Merriweather Sans` in your Tailwind config file. E.g. `tailwind.config.js`.
+
+```javascript
+module.exports = {
+	theme: {
+		fontFamily: {
+			sans: ['Merriweather Sans', 'sans-serif'],
+		},
+	},
+```
+
+That will overwrite Tailwind default font family settings and will create a class named `font-sans` that you can use to styling React components.
+
+Finally, add the class `font-sans` to your `App` component in `App.tsx` or `App.js` file.
+
+```javascript
+function App() {
+	return (
+		<div className="App font-sans">
+			<HomePage />
+			<DetailsPage />
+		</div>
+	);
+}
+```
+
 ## To-do list
 
 - [ ] Decrease the chart font size on the desktop
