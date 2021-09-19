@@ -161,6 +161,14 @@ We set the width of `SwiperSlide` to `1200px` to make sure we can scroll over th
 
 https://www.freecodecamp.org/news/make-react-apps-responsive/
 
+### Add custom fonts in React Tailwind
+
+## To-do list
+
+- [ ] Decrease the chart font size on the desktop
+- [ ] Align temperatures on the daily forecast
+- [ ] Make OpenWeather API calls
+
 ## Author
 
 - GitHub - [xingcdev](https://github.com/xingcdev)
