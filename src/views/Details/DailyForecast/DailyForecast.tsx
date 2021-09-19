@@ -364,7 +364,7 @@ const DailyForecast = function () {
 							{index === 0 ? 'Now' : dayjs.unix(singleDay.time).format('ddd')}
 						</p>
 						<section>
-							<span className="mr-5">{singleDay.dayTemp}&deg;</span>
+							<span className="mr-5 text-black">{singleDay.dayTemp}&deg;</span>
 							<span>{singleDay.nightTemp}&deg;</span>
 						</section>
 
@@ -373,7 +373,7 @@ const DailyForecast = function () {
 								{<WeatherIcon name={singleDay.icon} size={32} color="#333" />}
 							</span>
 
-							<span>{singleDay.description}</span>
+							<span className="text-gray-700">{singleDay.description}</span>
 						</section>
 					</li>
 				))}
