@@ -5,6 +5,9 @@ module.exports = {
 	purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
 	darkMode: false, // or 'media' or 'class'
 	theme: {
+		fontFamily: {
+			sans: ['Merriweather Sans', 'sans-serif'],
+		},
 		// Extend the default color palette rather than override it,
 		extend: {
 			colors: {
