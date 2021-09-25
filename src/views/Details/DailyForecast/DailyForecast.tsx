@@ -357,19 +357,21 @@ const DailyForecast = function () {
 	return (
 		<div>
 			<h2>This week</h2>
-			<ul>
+			<ul className="space-y-6">
 				{forecastData.map((singleDay, index) => (
 					<li key={index} className="flex justify-between items-center">
-						<p>
+						<p className="font-bold">
 							{index === 0 ? 'Now' : dayjs.unix(singleDay.time).format('ddd')}
 						</p>
 						<section>
-							<span className="mr-5 text-black">{singleDay.dayTemp}&deg;</span>
-							<span>{singleDay.nightTemp}&deg;</span>
+							<span className="mr-5 text-black font-bold">
+								{singleDay.dayTemp}&deg;
+							</span>
+							<span className="font-bold">{singleDay.nightTemp}&deg;</span>
 						</section>
 
 						<section>
-							<span className="mr-4">
+							<span className="mr-4 font-bold">
 								{<WeatherIcon name={singleDay.icon} size={32} color="#333" />}
 							</span>
 
