@@ -208,7 +208,6 @@ function App() {
 
 ## To-do list
 
-- [ ] Decrease the chart font size on the desktop
 - [ ] Align temperatures on the daily forecast
 - [ ] Make OpenWeather API calls
 
