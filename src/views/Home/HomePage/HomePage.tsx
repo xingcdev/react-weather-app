@@ -1,63 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import HourlyForecast from '../HourlyForecast/HourlyForecast';
 import WeatherHeader from '../WeatherHeader/WeatherHeader';
+import useWeatherData from '../../../api/openweather/useWeatherData';
 
-interface Data {
-	dt: number;
-	temp?: number;
-	weather?: [
-		{
-			id: number;
-		}
-	];
+interface WeatherData {
+	timezone: string;
+	current: {
+		weather: [{ id: number }];
+	};
+	hourly: { [key: string]: any }[];
 }
 
 function HomePage() {
-	const [backgroundColor, setBackgroundColor] = useState(
-		'bg-gradient-to-b from-blue-100 to-blue-400'
+	const [backgroundColor, setBackgroundColor] = useState(null);
+
+	const weatherData: WeatherData = useWeatherData();
+	useEffect(
+		() =>
+			setBackgroundColor(
+				changeBackgroundColor(
+					weatherData ? weatherData.current.weather[0].id : 0
+				)
+			),
+		[]
 	);
+	if (!weatherData) return <p>Loading...</p>;
 
-	const [weatherData, setWeatherData] = useState({
-		timezone: '',
-		current: {
-			weather: [
-				{
-					id: 0,
-				},
-			],
-		},
-		hourly: [],
-	});
-	const [isLoaded, setIsLoaded] = useState(true);
-	useEffect(() => {
-		const fetchData = async function () {
-			await fetch(
-				`${process.env.REACT_APP_WEATHER_API_URL}onecall?lat=48.856614&lon=2.3522219&units=metric&&exclude=minutely,daily,alerts&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-			)
-				.then((res) => res.json())
-				.then((result) => {
-					setWeatherData(result);
-					console.log(result);
-					setIsLoaded(true);
-					setBackgroundColor(
-						changeBackgroundColor(weatherData.current.weather[0].id)
-					);
-				});
-		};
-
-		fetchData();
-	}, []);
-
-	if (!isLoaded) return <p>Loading...</p>;
-	else
-		return (
-			<div
-				className={`${backgroundColor} lg:rounded-lg lg:shadow-md lg:col-start-4 lg:col-end-7 lg:row-span-2 `}
-			>
-				<WeatherHeader city={weatherData.timezone} data={weatherData.current} />
-				<HourlyForecast data={weatherData.hourly} />
-			</div>
-		);
+	return (
+		<div
+			className={`${backgroundColor} lg:rounded-lg lg:shadow-md lg:col-start-4 lg:col-end-7 lg:row-span-2 `}
+		>
+			<WeatherHeader city={weatherData.timezone} data={weatherData.current} />
+			<HourlyForecast data={weatherData.hourly} />
+		</div>
+	);
 }
 
 function changeBackgroundColor(weatherId: number) {
