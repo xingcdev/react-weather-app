@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../../../components/Card/Card';
 import ScrollableContainer from '../../../components/ScrollableContainer/ScrollableContainer';
-import { LineChart, Line, YAxis, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, YAxis } from 'recharts';
 import dayjs from 'dayjs';
 import WeatherIcon from '../../../components/WeatherIcon/WeatherIcon';
 
@@ -36,7 +36,8 @@ type Props = {
 };
 
 const HourlyForecast = function (props: Props) {
-	const chartData: ChartData[] = computeHourlyForecast(props.data, 2);
+	let chartData: ChartData[] = convertTo24Hours(props.data);
+	chartData = computeHourlyForecast(chartData, 2);
 
 	return (
 		<Card>
@@ -46,7 +47,7 @@ const HourlyForecast = function (props: Props) {
 					data={chartData}
 					width={1200}
 					height={143}
-					margin={{ top: 70, right: 40, left: 40, bottom: 20 }}
+					margin={{ top: 70, right: 23, left: 20, bottom: 0 }}
 				>
 					<Line
 						type="linear"
@@ -75,6 +76,11 @@ const convertToReadableHour = function (timestamp: any) {
 	/* JavaScript works in milliseconds, multiplied by 1000 so that the argument is in milliseconds, not seconds. */
 	return dayjs(timestamp * 1000).format('h A');
 };
+
+// The default hourly data contains 48 elements.
+function convertTo24Hours(data: any[]) {
+	return data.slice(0, 24);
+}
 
 function computeHourlyForecast(data: any[], gap: number) {
 	let hourlyWeather: ChartData[] = [];
