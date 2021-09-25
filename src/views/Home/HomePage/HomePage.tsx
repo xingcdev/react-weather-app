@@ -15,6 +15,8 @@ function HomePage() {
 	const [backgroundColor, setBackgroundColor] = useState(null);
 
 	const weatherData: WeatherData = useWeatherData();
+	console.log(weatherData);
+
 	useEffect(
 		() =>
 			setBackgroundColor(
