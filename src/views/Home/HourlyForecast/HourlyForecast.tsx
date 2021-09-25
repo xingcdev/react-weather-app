@@ -46,7 +46,7 @@ const HourlyForecast = function (props: Props) {
 					data={chartData}
 					width={1200}
 					height={143}
-					margin={{ top: 100, right: 40, left: 40, bottom: 20 }}
+					margin={{ top: 70, right: 40, left: 40, bottom: 20 }}
 				>
 					<Line
 						type="linear"
