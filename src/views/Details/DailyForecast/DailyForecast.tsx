@@ -357,7 +357,7 @@ const DailyForecast = function () {
 	return (
 		<div>
 			<h2>This week</h2>
-			<ul className="space-y-6">
+			<ul className="space-y-4 lg:space-y-2">
 				{forecastData.map((singleDay, index) => (
 					<li key={index} className="flex justify-between items-center">
 						<p className="font-bold">

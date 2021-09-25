@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../../../components/Card/Card';
 import ScrollableContainer from '../../../components/ScrollableContainer/ScrollableContainer';
-import { LineChart, Line, YAxis } from 'recharts';
+import { LineChart, Line, YAxis, ResponsiveContainer } from 'recharts';
 import dayjs from 'dayjs';
 import WeatherIcon from '../../../components/WeatherIcon/WeatherIcon';
 
@@ -16,14 +16,14 @@ function CustomLabel(props) {
 	const iconSize = 32;
 	return (
 		<svg>
-			<g transform={`translate(${x - iconSize / 2},${y - 80})`}>
+			<g transform={`translate(${x - iconSize / 2},${y - 65})`}>
 				<WeatherIcon name={data[index].icon} size={iconSize} color="#333" />
 			</g>
-			<g transform={`translate(${x},${y - 25})`}>
-				<text fontSize={20} textAnchor="middle">
+			<g transform={`translate(${x},${y - 15})`}>
+				<text fontSize={15} textAnchor="middle">
 					{data[index].temperature}
 				</text>
-				<text dy={60} fill="#6B7280" fontSize={13} textAnchor="middle">
+				<text dy={40} fill="#6B7280" fontSize={12} textAnchor="middle">
 					{data[index].hour}
 				</text>
 			</g>
@@ -45,7 +45,7 @@ const HourlyForecast = function (props: Props) {
 				<LineChart
 					data={chartData}
 					width={1200}
-					height={200}
+					height={143}
 					margin={{ top: 100, right: 40, left: 40, bottom: 20 }}
 				>
 					<Line

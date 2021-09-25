@@ -627,7 +627,7 @@ function HomePage() {
 	else
 		return (
 			<div
-				className={`${backgroundColor} lg:rounded-lg lg:shadow-md lg:col-start-3 lg:col-end-7 lg:row-span-2 `}
+				className={`${backgroundColor} lg:rounded-lg lg:shadow-md lg:col-start-4 lg:col-end-7 lg:row-span-2 `}
 			>
 				<WeatherHeader
 					city={weatherData.name}
