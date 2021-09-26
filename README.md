@@ -206,10 +206,16 @@ function App() {
 }
 ```
 
+## Developer
+
+### 1. Configure .env
+
 ## To-do list
 
 - [x] Align temperatures on the daily forecast
 - [x] Make OpenWeather API calls
+- [ ] Deploy to GitHub Pages
+      https://create-react-app.dev/docs/deployment/#github-pages
 - [ ] Search city
 
 ## Author
