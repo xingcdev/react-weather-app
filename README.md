@@ -208,8 +208,9 @@ function App() {
 
 ## To-do list
 
-- [ ] Align temperatures on the daily forecast
-- [ ] Make OpenWeather API calls
+- [x] Align temperatures on the daily forecast
+- [x] Make OpenWeather API calls
+- [ ] Search city
 
 ## Author
 
