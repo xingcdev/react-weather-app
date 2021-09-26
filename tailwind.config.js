@@ -15,6 +15,9 @@ module.exports = {
 				background: '#fefefe',
 				card: '#F9FAFB',
 			},
+			flex: {
+				2: '1 0 30%',
+			},
 		},
 	},
 	variants: {
