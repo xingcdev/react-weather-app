@@ -30,7 +30,7 @@ function HomePage() {
 
 	return (
 		<div
-			className={`${backgroundColor} lg:rounded-lg lg:shadow-md lg:col-start-4 lg:col-end-7 lg:row-span-2 lg:pb-4`}
+			className={`${backgroundColor} lg:rounded-lg lg:shadow-md lg:col-start-4 lg:col-end-7 lg:row-span-2 pb-4`}
 		>
 			<WeatherHeader city={weatherData.timezone} data={weatherData.current} />
 			<HourlyForecast data={weatherData.hourly} />
