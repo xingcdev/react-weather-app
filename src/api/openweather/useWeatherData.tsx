@@ -21,4 +21,21 @@ function useWeatherData(dataType?: string) {
 	return weatherData;
 }
 
+export function useConvertToCoord(cityName: string) {
+	let apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
+	const [coordinates, setCoordinates] = useState({});
+	useEffect(() => {
+		const fetchData = async function () {
+			await fetch(apiUrl)
+				.then((res) => res.json())
+				.then((result) => {
+					setCoordinates(result);
+				});
+		};
+		fetchData();
+	}, []);
+
+	return coordinates;
+}
+
 export default useWeatherData;

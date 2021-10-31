@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import HourlyForecast from '../HourlyForecast/HourlyForecast';
 import WeatherHeader from '../WeatherHeader/WeatherHeader';
-import useWeatherData from '../../../api/openweather/useWeatherData';
+import useWeatherData, {
+	useConvertToCoord,
+} from '../../../api/openweather/useWeatherData';
+import Search from '../../../components/Input/Search/Search';
 
 interface WeatherData {
 	timezone: string;
@@ -13,6 +16,7 @@ interface WeatherData {
 
 function HomePage() {
 	const [backgroundColor, setBackgroundColor] = useState(null);
+	const [coordinates, setCoordinates] = useState({ lat: '', lon: '' });
 
 	const weatherData: WeatherData = useWeatherData();
 	console.log(weatherData);
@@ -32,6 +36,7 @@ function HomePage() {
 		<div
 			className={`${backgroundColor} lg:rounded-lg lg:shadow-md lg:col-start-4 lg:col-end-7 lg:row-span-2 pb-4`}
 		>
+			<Search updateCoord={setCoordinates} />
 			<WeatherHeader city={weatherData.timezone} data={weatherData.current} />
 			<HourlyForecast data={weatherData.hourly} />
 		</div>

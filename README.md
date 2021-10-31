@@ -206,6 +206,15 @@ function App() {
 }
 ```
 
+### Add the search functionality
+
+When the user type a city in the search input field, the app shows a list of suggestions of city.
+The Openweather API needs the latitude & longitude to get data. But we want to type the city name, not the lat & lon. That's why we are going to use the Geocoding API to _convert_ the city name that user type to the coordinate.
+
+- create a input component. when the user clicks on the submit button, we call Geocoding API.
+- create a array of data, when the input is changing, we filter the data from the array.
+- create a search component that accepts data prop & return a input element
+
 ## Developer
 
 ### 1. Configure .env
